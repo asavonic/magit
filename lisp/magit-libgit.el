@@ -69,6 +69,23 @@ If optional DIRECTORY is nil, then use `default-directory'."
          (unless noerror
            (signal 'magit-outside-git-repo default-directory)))))
 
+(cl-defmethod magit-file-tracked-p
+  (file &context ((magit-gitimpl) (eql libgit)))
+  (and (magit--assert-default-directory)
+       (if-let ((repo (magit-libgit-repo)))
+           ;; FIXME: not sure how to check if a file is untracked.
+           ;; libgit errors out with Git error: invalid: "attempt to
+           ;; get status of nonexistent file"
+           ;;
+           ;; Possible solution:
+           ;; Extend libgit to check for the error code and return an
+           ;; additional status'untracked?
+           (condition-case nil
+               (eq 'ignored (libgit-status-file repo file))
+             (error t))
+         (unless noerror
+           (signal 'magit-outside-git-repo default-directory)))))
+
 ;;; _
 (provide 'magit-libgit)
 ;;; magit-libgit.el ends here

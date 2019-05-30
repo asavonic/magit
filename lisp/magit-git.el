@@ -822,7 +822,7 @@ tracked file."
                   (directory-file-name (file-name-directory file))))
       (file-relative-name file it))))
 
-(defun magit-file-tracked-p (file)
+(cl-defgeneric magit-file-tracked-p (file)
   (magit-git-success "ls-files" "--error-unmatch" file))
 
 (defun magit-list-files (&rest args)

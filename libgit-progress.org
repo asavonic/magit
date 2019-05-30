@@ -10,7 +10,7 @@ Core:
 - [ ] [[file:lisp/magit-git.el::(defun%20magit-inside-worktree-p][magit-inside-worktree-p]]
 
 Files:
-- [ ] [[file:lisp/magit-git.el::(defun%20magit-file-tracked-p][magit-file-tracked-p]]
+- [X] [[file:lisp/magit-git.el::(defun%20magit-file-tracked-p][magit-file-tracked-p]]
 - [ ] [[file:lisp/magit-git.el::(defun%20magit-list-files][magit-list-files]]
 - [ ] [[file:lisp/magit-git.el::(defun%20magit-tracked-files][magit-tracked-files]]
 - [ ] [[file:lisp/magit-git.el::(defun%20magit-untracked-files][magit-untracked-files]]
