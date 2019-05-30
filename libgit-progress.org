@@ -28,9 +28,9 @@ Files:
 Predicates:
 - [ ] [[file:lisp/magit-git.el::(defun%20magit-no-commit-p][magit-no-commit-p]]
 - [ ] [[file:lisp/magit-git.el::(defun%20magit-merge-commit-p][magit-merge-commit-p]]
-- [ ] [[file:lisp/magit-git.el::(defun%20magit-anything-staged-p][magit-anything-staged-p]]
-- [ ] [[file:lisp/magit-git.el::(defun%20magit-anything-unstaged-p][magit-anything-unstaged-p]]
-- [ ] [[file:lisp/magit-git.el::(defun%20magit-anything-modified-p][magit-anything-modified-p]]
+- [X] [[file:lisp/magit-git.el::(defun%20magit-anything-staged-p][magit-anything-staged-p]]
+- [X] [[file:lisp/magit-git.el::(defun%20magit-anything-unstaged-p][magit-anything-unstaged-p]]
+- [X] [[file:lisp/magit-git.el::(defun%20magit-anything-modified-p][magit-anything-modified-p]]
 - [ ] [[file:lisp/magit-git.el::(defun%20magit-anything-unmerged-p][magit-anything-unmerged-p]]
 
 Revisions:

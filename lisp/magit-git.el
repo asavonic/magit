@@ -979,7 +979,7 @@ Sorted from longest to shortest CYGWIN name."
   "Return t if COMMIT is a merge commit."
   (> (length (magit-commit-parents commit)) 1))
 
-(defun magit-anything-staged-p (&optional ignore-submodules &rest files)
+(cl-defgeneric magit-anything-staged-p (&optional ignore-submodules &rest files)
   "Return t if there are any staged changes.
 If optional FILES is non-nil, then only changes to those files
 are considered."
@@ -987,7 +987,7 @@ are considered."
                      (and ignore-submodules "--ignore-submodules")
                      "--" files))
 
-(defun magit-anything-unstaged-p (&optional ignore-submodules &rest files)
+(cl-defgeneric magit-anything-unstaged-p (&optional ignore-submodules &rest files)
   "Return t if there are any unstaged changes.
 If optional FILES is non-nil, then only changes to those files
 are considered."
@@ -995,7 +995,7 @@ are considered."
                      (and ignore-submodules "--ignore-submodules")
                      "--" files))
 
-(defun magit-anything-modified-p (&optional ignore-submodules &rest files)
+(cl-defgeneric magit-anything-modified-p (&optional ignore-submodules &rest files)
   "Return t if there are any staged or unstaged changes.
 If optional FILES is non-nil, then only changes to those files
 are considered."
