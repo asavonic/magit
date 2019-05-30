@@ -1,3 +1,5 @@
+* [4/88] libgit enabling in magit
+
 Config:
 - [ ] [[file:lisp/magit-git.el::(defun%20magit-get-all][magit-get-all]]
 - [ ] [[file:lisp/magit-git.el::(defun%20magit-get-boolean][magit-get-boolean]]
