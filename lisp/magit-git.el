@@ -619,11 +619,14 @@ the directory is not located inside a Git repository, then return
 nil."
   (magit--with-refresh-cache (list default-directory 'magit-git-dir path)
     (magit--with-safe-default-directory nil
-      (when-let ((dir (magit-rev-parse-safe "--git-dir")))
+      (when-let ((dir (magit--get-git-dir)))
         (setq dir (file-name-as-directory (magit-expand-git-file-name dir)))
         (unless (file-remote-p dir)
           (setq dir (concat (file-remote-p default-directory) dir)))
         (if path (expand-file-name (convert-standard-filename path) dir) dir)))))
+
+(cl-defgeneric magit--get-git-dir ()
+  (magit-rev-parse-safe "--git-dir"))
 
 (defvar magit--separated-gitdirs nil)
 
@@ -695,7 +698,7 @@ returning the truename."
                 updir
               (concat (file-remote-p default-directory)
                       (file-name-as-directory topdir))))
-        (when-let ((gitdir (magit-rev-parse-safe "--git-dir")))
+        (when-let ((gitdir (magit--get-git-dir)))
           (setq gitdir (file-name-as-directory
                         (if (file-name-absolute-p gitdir)
                             ;; We might have followed a symlink.

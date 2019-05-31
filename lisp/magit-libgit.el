@@ -122,6 +122,10 @@ If optional DIRECTORY is nil, then use `default-directory'."
              found)
          (signal 'magit-outside-git-repo default-directory))))
 
+(cl-defmethod magit--get-git-dir (&context ((magit-gitimpl) (eql libgit)))
+  (when-let ((repo (magit-libgit-repo)))
+    (libgit-repository-path repo)))
+
 ;;; _
 (provide 'magit-libgit)
 ;;; magit-libgit.el ends here

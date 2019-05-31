@@ -1,4 +1,4 @@
-* [4/88] libgit enabling in magit
+* [5/88] libgit enabling in magit
 
 Config:
 - [ ] [[file:lisp/magit-git.el::(defun%20magit-get-all][magit-get-all]]
@@ -7,7 +7,7 @@ Config:
 - [ ] [[file:lisp/magit-git.el::(defun%20magit-set-all][magit-set-all]]
 
 Core:
-- [ ] [[file:lisp/magit-git.el::(defun%20magit-git-dir%20][magit-git-dir]]
+- [X] [[file:lisp/magit-git.el::(defun%20magit-git-dir%20][magit-git-dir]]
 - [ ] [[file:lisp/magit-git.el::(defun%20magit-toplevel][magit-toplevel]]
 - [ ] [[file:lisp/magit-git.el::(defun%20magit-inside-worktree-p][magit-inside-worktree-p]]
 
