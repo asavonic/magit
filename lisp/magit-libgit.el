@@ -159,6 +159,10 @@ If optional DIRECTORY is nil, then use `default-directory'."
       (libgit-object-id (libgit-revparse-single (magit-libgit-repo) rev))
     (error nil)))
 
+(cl-defmethod magit-get-submodule-name (path &context ((magit-gitimpl) (eql libgit)))
+  (libgit-submodule-name
+   (libgit-submodule-lookup (magit-libgit-repo) path)))
+
 ;;; _
 (provide 'magit-libgit)
 ;;; magit-libgit.el ends here

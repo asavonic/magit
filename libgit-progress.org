@@ -1,4 +1,4 @@
-* [9/86] libgit enabling in magit
+* [10/82] libgit enabling in magit
 
 Config:
 - [ ] [[file:lisp/magit-git.el::(defun%20magit-get-all][magit-get-all]]
@@ -35,11 +35,7 @@ Predicates:
 - [ ] [[file:lisp/magit-git.el::(defun%20magit-anything-unmerged-p][magit-anything-unmerged-p]]
 
 Revisions:
-- [ ] [[file:lisp/magit-git.el::(defun%20magit-rev-parse][magit-rev-parse]]
-- [ ] [[file:lisp/magit-git.el::(defun%20magit-rev-parse-safe][magit-rev-parse-safe]]
-- [ ] [[file:lisp/magit-git.el::(defun%20magit-rev-parse-true][magit-rev-parse-true]]
-- [ ] [[file:lisp/magit-git.el::(defun%20magit-rev-parse-false][magit-rev-parse-false]]
-- [ ] [[file:lisp/magit-git.el::(defun%20magit-rev-parse-p][magit-rev-parse-p]]
+- [ ] [[file:lisp/magit-git.el::(defun%20magit-rev-parse][magit-rev-parse]] - check all usages
 - [X] [[file:lisp/magit-git.el::(defun%20magit-rev-verify][magit-rev-verify]]
 - [ ] [[file:lisp/magit-git.el::(defun%20magit-rev-equal][magit-rev-equal]]
 - [ ] [[file:lisp/magit-git.el::(defun%20magit-rev-ancestor-p][magit-rev-ancestor-p]]
@@ -76,7 +72,7 @@ Revisions:
 - [ ] [[file:lisp/magit-git.el::(defun%20magit-remote-list-branches][magit-remote-list-branches]]
 - [ ] [[file:lisp/magit-git.el::(defun%20magit-remote-list-refs][magit-remote-list-refs]]
 - [ ] [[file:lisp/magit-git.el::(defun%20magit-list-module-paths][magit-list-module-paths]]
-- [ ] [[file:lisp/magit-git.el::(defun%20magit-get-submodule-name][magit-get-submodule-name]]
+- [X] [[file:lisp/magit-git.el::(defun%20magit-get-submodule-name][magit-get-submodule-name]]
 - [ ] [[file:lisp/magit-git.el::(defun%20magit-list-worktrees][magit-list-worktrees]]
 - [ ] [[file:lisp/magit-git.el::(defun%20magit-symbolic-ref-p][magit-symbolic-ref-p]]
 - [ ] [[file:lisp/magit-git.el::(defun%20magit-rev-diff-count][magit-rev-diff-count]]
