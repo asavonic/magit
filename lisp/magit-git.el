@@ -837,12 +837,12 @@ tracked file."
 (defun magit-untracked-files (&optional all files)
   (magit-list-files "--other" (unless all "--exclude-standard") "--" files))
 
-(defun magit-unstaged-files (&optional nomodules files)
+(cl-defgeneric magit-unstaged-files (&optional nomodules files)
   (magit-git-items "diff-files" "-z" "--name-only"
                    (and nomodules "--ignore-submodules")
                    "--" files))
 
-(defun magit-staged-files (&optional nomodules files)
+(cl-defgeneric magit-staged-files (&optional nomodules files)
   (magit-git-items "diff-index" "-z" "--name-only" "--cached"
                    (and nomodules "--ignore-submodules")
                    (magit-headish) "--" files))

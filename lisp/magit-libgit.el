@@ -89,7 +89,7 @@ If optional DIRECTORY is nil, then use `default-directory'."
 (cl-defmethod magit-anything-staged-p (&context ((magit-gitimpl) (eql libgit))
                                        &optional ignore-submodules
                                        &rest files)
-  (magit--libgit-anything-p 'index-only ignore-submodules files))
+  (magit--libgit-anything-p 'index-only ignore-submodules files nil))
 
 (cl-defmethod magit-anything-unstaged-p (&context ((magit-gitimpl) (eql libgit))
                                        &optional ignore-submodules
@@ -102,23 +102,29 @@ If optional DIRECTORY is nil, then use `default-directory'."
   ;; Solution: Remove "default" flags from libgit: it is always
   ;; possible to explicitly add flags that we consider default, but
   ;; there is no way to remove flags if we don't have any.
-  (magit--libgit-anything-p 'workdir-only ignore-submodules files))
+  (magit--libgit-anything-p 'workdir-only ignore-submodules files nil))
 
 (cl-defmethod magit-anything-modified-p (&context ((magit-gitimpl) (eql libgit))
                                        &optional ignore-submodules
                                        &rest files)
-  (magit--libgit-anything-p 'index-and-workdir ignore-submodules files))
+  (magit--libgit-anything-p 'index-and-workdir ignore-submodules files nil))
 
 
-(defun magit--libgit-anything-p (show ignore-submodules files)
+(defun magit--libgit-anything-p (show ignore-submodules files required-status)
   (and (magit--assert-default-directory)
        (if-let ((repo (magit-libgit-repo)))
            (let (found flags)
              (when ignore-submodules (push 'exclude-submodules flags))
              (when files (push 'disable-pathspec-match flags))
-             (libgit-status-foreach repo
-                                    (lambda (file status) (setq found t))
-                                    show flags files)
+             (libgit-status-foreach-ext repo
+                                        (lambda (file status)
+                                          (if required-status
+                                              (when (member
+                                                     required-status
+                                                     (libgit-status-decode status))
+                                                (setq found t))
+                                            (setq found t)))
+                                        show flags files)
              found)
          (signal 'magit-outside-git-repo default-directory))))
 
@@ -130,6 +136,23 @@ If optional DIRECTORY is nil, then use `default-directory'."
                                        &optional noerror)
   (and (magit--assert-default-directory noerror)
        (libgit-repository-worktree-p (magit-libgit-repo))))
+
+(cl-defmethod magit-unstaged-files (&context ((magit-gitimpl) (eql libgit))
+                                    &optional nomodules files)
+  (magit--libgit-collect-files 'workdir-only nomodules files))
+
+(cl-defmethod magit-staged-files (&context ((magit-gitimpl) (eql libgit))
+                                           &optional nomodules files)
+  (magit--libgit-collect-files 'index-only nomodules files))
+
+(defun magit--libgit-collect-files (show nomodules files)
+  (let (collected-files flags)
+    (when nomodules (push 'exclude-submodules flags))
+    (when files (push 'disable-pathspec-match flags))
+    (libgit-status-foreach-ext (magit-libgit-repo)
+                               (lambda (file status) (push file collected-files))
+                               show flags files)
+    collected-files))
 
 ;;; _
 (provide 'magit-libgit)
