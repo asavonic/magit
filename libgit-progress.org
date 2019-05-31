@@ -1,4 +1,4 @@
-* [8/88] libgit enabling in magit
+* [9/86] libgit enabling in magit
 
 Config:
 - [ ] [[file:lisp/magit-git.el::(defun%20magit-get-all][magit-get-all]]
@@ -28,7 +28,6 @@ Files:
 - [ ] [[file:lisp/magit-git.el::(defun%20magit-file-status][magit-file-status]]
 
 Predicates:
-- [ ] [[file:lisp/magit-git.el::(defun%20magit-no-commit-p][magit-no-commit-p]]
 - [ ] [[file:lisp/magit-git.el::(defun%20magit-merge-commit-p][magit-merge-commit-p]]
 - [X] [[file:lisp/magit-git.el::(defun%20magit-anything-staged-p][magit-anything-staged-p]]
 - [X] [[file:lisp/magit-git.el::(defun%20magit-anything-unstaged-p][magit-anything-unstaged-p]]
@@ -41,8 +40,7 @@ Revisions:
 - [ ] [[file:lisp/magit-git.el::(defun%20magit-rev-parse-true][magit-rev-parse-true]]
 - [ ] [[file:lisp/magit-git.el::(defun%20magit-rev-parse-false][magit-rev-parse-false]]
 - [ ] [[file:lisp/magit-git.el::(defun%20magit-rev-parse-p][magit-rev-parse-p]]
-- [ ] [[file:lisp/magit-git.el::(defun%20magit-rev-verify][magit-rev-verify]]
-- [ ] [[file:lisp/magit-git.el::(defun%20magit-commit-p][magit-commit-p]]
+- [X] [[file:lisp/magit-git.el::(defun%20magit-rev-verify][magit-rev-verify]]
 - [ ] [[file:lisp/magit-git.el::(defun%20magit-rev-equal][magit-rev-equal]]
 - [ ] [[file:lisp/magit-git.el::(defun%20magit-rev-ancestor-p][magit-rev-ancestor-p]]
 - [ ] [[file:lisp/magit-git.el::(defun%20magit-rev-name][magit-rev-name]]

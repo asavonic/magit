@@ -154,6 +154,11 @@ If optional DIRECTORY is nil, then use `default-directory'."
                                show flags files)
     collected-files))
 
+(cl-defmethod magit-rev-verify (rev &context ((magit-gitimpl) (eql libgit)))
+  (condition-case nil
+      (libgit-object-id (libgit-revparse-single (magit-libgit-repo) rev))
+    (error nil)))
+
 ;;; _
 (provide 'magit-libgit)
 ;;; magit-libgit.el ends here
