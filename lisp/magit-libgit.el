@@ -126,6 +126,11 @@ If optional DIRECTORY is nil, then use `default-directory'."
   (when-let ((repo (magit-libgit-repo)))
     (libgit-repository-path repo)))
 
+(cl-defmethod magit-inside-worktree-p (&context ((magit-gitimpl) (eql libgit))
+                                       &optional noerror)
+  (and (magit--assert-default-directory noerror)
+       (libgit-repository-worktree-p (magit-libgit-repo))))
+
 ;;; _
 (provide 'magit-libgit)
 ;;; magit-libgit.el ends here
