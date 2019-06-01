@@ -854,7 +854,7 @@ tracked file."
                    "diff" "-z" "--numstat" "--ignore-submodules"
                    args)))
 
-(defun magit-unmerged-files ()
+(cl-defgeneric magit-unmerged-files ()
   (magit-git-items "diff-files" "-z" "--name-only" "--diff-filter=U"))
 
 (defun magit-ignored-files ()

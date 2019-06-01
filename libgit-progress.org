@@ -1,4 +1,4 @@
-* [12/82] libgit enabling in magit
+* [13/82] libgit enabling in magit
 
 Config:
 - [ ] [[file:lisp/magit-git.el::(defun%20magit-get-all][magit-get-all]]
@@ -19,7 +19,7 @@ Files:
 - [X] [[file:lisp/magit-git.el::(defun%20magit-unstaged-files][magit-unstaged-files]]
 - [X] [[file:lisp/magit-git.el::(defun%20magit-staged-files][magit-staged-files]]
 - [ ] [[file:lisp/magit-git.el::(defun%20magit-binary-files][magit-binary-files]]
-- [ ] [[file:lisp/magit-git.el::(defun%20magit-unmerged-files][magit-unmerged-files]]
+- [X] [[file:lisp/magit-git.el::(defun%20magit-unmerged-files][magit-unmerged-files]]
 - [ ] [[file:lisp/magit-git.el::(defun%20magit-ignored-files][magit-ignored-files]]
 - [ ] [[file:lisp/magit-git.el::(defun%20magit-skip-worktree-files][magit-skip-worktree-files]]
 - [X] [[file:lisp/magit-git.el::(defun%20magit-revision-files][magit-revision-files]]

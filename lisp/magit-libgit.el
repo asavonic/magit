@@ -139,18 +139,25 @@ If optional DIRECTORY is nil, then use `default-directory'."
 
 (cl-defmethod magit-unstaged-files (&context ((magit-gitimpl) (eql libgit))
                                     &optional nomodules files)
-  (magit--libgit-collect-files 'workdir-only nomodules files))
+  (magit--libgit-collect-files #'identity 'workdir-only nomodules files))
 
 (cl-defmethod magit-staged-files (&context ((magit-gitimpl) (eql libgit))
                                            &optional nomodules files)
-  (magit--libgit-collect-files 'index-only nomodules files))
+  (magit--libgit-collect-files #'identity 'index-only nomodules files))
 
-(defun magit--libgit-collect-files (show nomodules files)
+(cl-defmethod magit-unmerged-files (&context ((magit-gitimpl) (eql libgit)))
+  (magit--libgit-collect-files
+   (lambda (file status) (eq 'conflicted status))
+   'index-and-workdir nil nil))
+
+(defun magit--libgit-collect-files (filter-fn show nomodules files)
   (let (collected-files flags)
     (when nomodules (push 'exclude-submodules flags))
     (when files (push 'disable-pathspec-match flags))
     (libgit-status-foreach-ext (magit-libgit-repo)
-                               (lambda (file status) (push file collected-files))
+                               (lambda (file status)
+                                 (when (apply filter-fn file status)
+                                   (push file collected-files)))
                                show flags files)
     collected-files))
 
