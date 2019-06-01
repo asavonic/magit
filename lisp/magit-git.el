@@ -866,7 +866,7 @@ tracked file."
                     (substring it 2)))
           (magit-git-items "ls-files" "-z" "-t")))
 
-(defun magit-revision-files (rev)
+(cl-defgeneric magit-revision-files (rev)
   (magit-with-toplevel
     (magit-git-items "ls-tree" "-z" "-r" "--name-only" rev)))
 

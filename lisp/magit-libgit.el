@@ -167,6 +167,18 @@ If optional DIRECTORY is nil, then use `default-directory'."
   (< 1 (libgit-commit-parentcount
         (libgit-commit-lookup (magit-libgit-repo) (magit-rev-verify commit)))))
 
+(cl-defmethod magit-revision-files (rev &context ((magit-gitimpl) (eql libgit)))
+  (let ((repo (magit-libgit-repo))
+        files)
+    (libgit-tree-walk
+     (libgit-commit-tree
+      (libgit-commit-lookup repo (magit-rev-verify rev)))
+     'pre
+     (lambda (dir tree-entry)
+       (when (eq 'blob (cadr tree-entry))
+         (push (concat dir (cadddr tree-entry)) files))))
+    files))
+
 ;;; _
 (provide 'magit-libgit)
 ;;; magit-libgit.el ends here
