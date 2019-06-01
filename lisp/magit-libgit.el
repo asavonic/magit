@@ -163,6 +163,10 @@ If optional DIRECTORY is nil, then use `default-directory'."
   (libgit-submodule-name
    (libgit-submodule-lookup (magit-libgit-repo) path)))
 
+(cl-defmethod magit-merge-commit-p (commit &context ((magit-gitimpl) (eql libgit)))
+  (< 1 (libgit-commit-parentcount
+        (libgit-commit-lookup (magit-libgit-repo) (magit-rev-verify commit)))))
+
 ;;; _
 (provide 'magit-libgit)
 ;;; magit-libgit.el ends here
