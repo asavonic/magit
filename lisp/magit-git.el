@@ -878,7 +878,7 @@ range.  Otherwise, it can be any revision or range accepted by
   (magit-with-toplevel
     (magit-git-items "diff" "-z" "--name-only" rev-or-range other-rev)))
 
-(defun magit-renamed-files (revA revB)
+(cl-defgeneric magit-renamed-files (revA revB)
   (--map (cons (nth 1 it) (nth 2 it))
          (-partition 3 (magit-git-items
                         "diff-tree" "-r" "--diff-filter=R" "-z" "-M"

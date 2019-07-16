@@ -186,6 +186,20 @@ If optional DIRECTORY is nil, then use `default-directory'."
          (push (concat dir (cadddr tree-entry)) files))))
     files))
 
+(cl-defmethod magit-renamed-files (revA revB)
+  (let* ((repo (magit-libgit-repo))
+         (treeA (libgit-commit-tree
+                 (libgit-commit-lookup repo (magit-rev-verify revA))))
+         (treeB (libgit-commit-tree
+                 (libgit-commit-lookup repo (magit-rev-verify revB))))
+         (diff (libgit-diff-tree-to-tree repo treeA treeB '((include-unmodified . t))))
+         renamed-files)
+    (libgit-diff-find-similar diff)
+    (dotimes (i (libgit-diff-num-deltas diff 'renamed) renamed-files)
+      (push (libgit-diff-delta-file-path
+             (libgit-diff-get-delta diff i))
+            renamed-files))))
+
 ;;; _
 (provide 'magit-libgit)
 ;;; magit-libgit.el ends here
