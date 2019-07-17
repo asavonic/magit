@@ -109,6 +109,9 @@ If optional DIRECTORY is nil, then use `default-directory'."
                                        &rest files)
   (magit--libgit-anything-p 'index-and-workdir ignore-submodules files nil))
 
+(cl-defmethod magit-anything-unmerged-p (&context ((magit-gitimpl) (eql libgit))
+                                         &rest files)
+  (magit--libgit-anything-p 'index-and-workdir t files 'conflicted))
 
 (defun magit--libgit-anything-p (show ignore-submodules files required-status)
   (and (magit--assert-default-directory)

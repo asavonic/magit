@@ -1005,7 +1005,7 @@ are considered."
   (or (apply 'magit-anything-staged-p   ignore-submodules files)
       (apply 'magit-anything-unstaged-p ignore-submodules files)))
 
-(defun magit-anything-unmerged-p (&rest files)
+(cl-defgeneric magit-anything-unmerged-p (&rest files)
   "Return t if there are any merge conflicts.
 If optional FILES is non-nil, then only conflicts in those files
 are considered."
