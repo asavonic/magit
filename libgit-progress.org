@@ -9,10 +9,8 @@ Config:
 Core:
 - [X] [[file:lisp/magit-git.el::(defun%20magit-git-dir%20][magit-git-dir]]
 - [ ] [[file:lisp/magit-git.el::(defun%20magit-toplevel][magit-toplevel]]
-- [X] [[file:lisp/magit-git.el::(defun%20magit-inside-worktree-p][magit-inside-worktree-p]]
 
 Files:
-- [X] [[file:lisp/magit-git.el::(defun%20magit-file-tracked-p][magit-file-tracked-p]]
 - [ ] [[file:lisp/magit-git.el::(defun%20magit-list-files][magit-list-files]]
 - [ ] [[file:lisp/magit-git.el::(defun%20magit-tracked-files][magit-tracked-files]]
 - [ ] [[file:lisp/magit-git.el::(defun%20magit-untracked-files][magit-untracked-files]]
@@ -28,15 +26,17 @@ Files:
 - [ ] [[file:lisp/magit-git.el::(defun%20magit-file-status][magit-file-status]]
 
 Predicates:
-- [X] [[file:lisp/magit-git.el::(defun%20magit-merge-commit-p][magit-merge-commit-p]]
-- [X] [[file:lisp/magit-git.el::(defun%20magit-anything-staged-p][magit-anything-staged-p]]
-- [X] [[file:lisp/magit-git.el::(defun%20magit-anything-unstaged-p][magit-anything-unstaged-p]]
-- [X] [[file:lisp/magit-git.el::(defun%20magit-anything-modified-p][magit-anything-modified-p]]
-- [X] [[file:lisp/magit-git.el::(defun%20magit-anything-unmerged-p][magit-anything-unmerged-p]]
+- [X] [[file:lisp/magit-git.el::(defun%20magit-inside-worktree-p][magit-inside-worktree-p]] - PR1
+- [X] [[file:lisp/magit-git.el::(defun%20magit-file-tracked-p][magit-file-tracked-p]] - PR1
+- [X] [[file:lisp/magit-git.el::(defun%20magit-merge-commit-p][magit-merge-commit-p]] - PR1
+- [X] [[file:lisp/magit-git.el::(defun%20magit-anything-staged-p][magit-anything-staged-p]] - PR1
+- [X] [[file:lisp/magit-git.el::(defun%20magit-anything-unstaged-p][magit-anything-unstaged-p]] - PR1
+- [X] [[file:lisp/magit-git.el::(defun%20magit-anything-modified-p][magit-anything-modified-p]] - PR1
+- [X] [[file:lisp/magit-git.el::(defun%20magit-anything-unmerged-p][magit-anything-unmerged-p]] - PR1
 
 Revisions:
 - [ ] [[file:lisp/magit-git.el::(defun%20magit-rev-parse][magit-rev-parse]] - check all usages
-- [X] [[file:lisp/magit-git.el::(defun%20magit-rev-verify][magit-rev-verify]]
+- [X] [[file:lisp/magit-git.el::(defun%20magit-rev-verify][magit-rev-verify]] - PR1
 - [ ] [[file:lisp/magit-git.el::(defun%20magit-rev-equal][magit-rev-equal]]
 - [ ] [[file:lisp/magit-git.el::(defun%20magit-rev-ancestor-p][magit-rev-ancestor-p]]
 - [ ] [[file:lisp/magit-git.el::(defun%20magit-rev-name][magit-rev-name]]
